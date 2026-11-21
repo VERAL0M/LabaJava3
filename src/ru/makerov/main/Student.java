@@ -1,10 +1,12 @@
+package ru.makerov.main;
+
 public class Student {
     private String name;
     private int[] marks;
 
     public Student(String name, int... marks) {
         this.name = name;
-        this.marks = marks;
+        setMarks(marks);
     }
 
 
@@ -13,15 +15,29 @@ public class Student {
     }
 
     public int[] getMarks() {
-        return marks;
+        return marks.clone();
     }
 
     public void setMarks(int[] marks) {
+        if (marks==null){
+            throw new IllegalArgumentException("Список оценок не может быть null");
+        }
+        marks = marks.clone();
+        for (int mark: marks){
+            if (mark<2 || mark>5){
+
+                throw new IllegalArgumentException("Оценка должна быть от 2 до 5");
+            }
+        }
         this.marks = marks;
     }
 
 
     public void setMark(int index, int value) {
+        if (value <2 || value>5){
+            throw new IllegalArgumentException("Оценка должна быть от 2 до 5");
+        }
+
         marks[index] = value;
     }
 
