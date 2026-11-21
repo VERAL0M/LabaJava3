@@ -31,7 +31,7 @@ public class Main {
 
         int n = 10;
         while (n!=0){
-            n  = readInt("Введите номер задачи (1-7), 0-выход:  ");
+            n  = readInt("Введите номер задачи (1-8), 0-выход:  ");
             switch (n){
 
                 case 1:
@@ -110,7 +110,7 @@ public class Main {
                     System.out.println("Задание 4.4");
                     Figure[] figures = {
                             new Circle(new Point(0, 0), 5),
-                            new Square(4),
+                            new Square(new Point(3,4), 5),
                             new Rectangle(new Point(0, 0), 4, 6),
                             new Triangle(
                                     new Point(0, 0),
@@ -129,9 +129,9 @@ public class Main {
                     System.out.println("Задание 5.3");
                     Figure[] figures1 = {
                             new Circle(new Point(0, 0), 5),
-                            new Square(4),
-                            new Square(5),
-                            new Square(1),
+                            new Square(new Point(3,5), 2),
+                            new Square(new Point(6,5), 4),
+                            new Square(new Point(3,0), 12),
                             new Circle(new Point(1, 2), 4),
                             new Circle(new Point(5, 5), 10)
 
@@ -143,7 +143,14 @@ public class Main {
                     System.out.println("Общая площадь: " + Figure.getTotalArea(figures1) + "\n\n");
 
                     break;
+
                 case 6:
+                    Square square = new Square(new Point(5, 3), 23);
+                    Polyline polyline = square.getPolyline();
+
+                    System.out.println("Длина замкнутой ломаной: " + polyline.getLength());
+                    break;
+                case 7:
                     System.out.println("Задание 6.2");
                     Point first = new Point(3, 5);
                     Point second = new Point(3, 5);
@@ -151,7 +158,7 @@ public class Main {
                     System.out.println(first.equals(second));
                     break;
 
-                case 7:
+                case 8:
                     System.out.println("Задание 8.4");
                     Point original = new Point(3, 4);
                     Point copy = original.clone();
